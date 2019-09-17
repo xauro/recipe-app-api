@@ -1,17 +1,17 @@
 language: python
 python:
   -"3.7"
-  
+
 matrix:
   include:
     - python: 3.7
       dist: xenial
       sudo: true
 services:
-  -docker
+  - docker
 
-before-script: pip instal doker-compose
+before-script: pip install docker-compose
 
 script:
-  -docker-compose run app sh - c "python manage.py test && flakes"
+  - docker-compose run --rm app sh - c "python manage.py test && flake8"
 
